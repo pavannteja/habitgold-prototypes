@@ -348,15 +348,6 @@
                         <div class="cmp-cell gold-col">Secure vault</div>
                     </div>
                 </div>
-                <div class="meter-block">
-                    <div class="meter-labels">
-                        <span>Transparent</span>
-                        <span>Full Transparency</span>
-                    </div>
-                    <div class="meter-track">
-                        <div class="meter-fill" id="meter-fill"></div>
-                    </div>
-                    <div class="meter-caption">Every milligram you own is verified, vaulted &amp; insured.</div>
                 </div>
             </div>
         </section>
@@ -390,17 +381,11 @@
                         setTimeout(() => { document.getElementById('bar-22k').style.width = '91.67%'; }, 300);
                         setTimeout(() => { document.getElementById('bar-24k').style.width = '99.9%';  }, 500);
                     }
-                    if (e.target.closest('#screen-compare')) {
-                        setTimeout(() => { document.getElementById('meter-fill').style.width = '99%'; }, 400);
-                    }
                 } else {
                     e.target.classList.remove('active');
                     if (e.target.closest('#screen-purity')) {
                         document.getElementById('bar-22k').style.width = '0%';
                         document.getElementById('bar-24k').style.width = '0%';
-                    }
-                    if (e.target.closest('#screen-compare')) {
-                        document.getElementById('meter-fill').style.width = '0%';
                     }
                 }
             });
