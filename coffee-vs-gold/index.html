@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>(function(){var p=new URLSearchParams(location.search),s=p.get('style');if(s)document.documentElement.classList.add('style-'+s);})();</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Coffee vs. Gold Reality Check &mdash; HabitGold</title>
+    <meta name="description" content="See how redirecting just Rs.50 a day from coffee to gold builds real wealth through the power of micro-habits.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/purchasing-power-machine/style.css">
+    <link rel="stylesheet" href="/styles/style-1.css">
+    <link rel="stylesheet" href="/styles/style-2.css">
+    <link rel="stylesheet" href="/styles/style-3.css">
+    <style>
+        .back-btn {
+            position: fixed;
+            top: 1.4rem; left: 1.4rem;
+            z-index: 100;
+            display: inline-flex; align-items: center; gap: 0.45rem;
+            padding: 0.5rem 1.1rem;
+            border-radius: 50px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem; font-weight: 500;
+            text-decoration: none;
+            background: rgba(255,255,255,0.06);
+            color: rgba(255,255,255,0.6);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.25s ease;
+            backdrop-filter: blur(14px);
+            letter-spacing: 0.5px;
+        }
+        .back-btn:hover { background: rgba(255,255,255,0.1); color: #fff; border-color: rgba(255,255,255,0.2); transform: translateX(-2px); }
+
+        /* ── Habit comparison cards ──────────────────────────── */
+        .habit-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+            width: 100%;
+            margin-top: 2rem;
+        }
+        .habit-card {
+            border-radius: 22px;
+            padding: 2rem 1.8rem;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+        }
+        .habit-card::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+        }
+        .habit-card:hover { transform: translateY(-6px); }
+        .habit-card.coffee {
+            background: linear-gradient(150deg, rgba(123,44,191,0.2), rgba(75,20,130,0.12));
+            border: 1px solid rgba(168,85,247,0.25);
+        }
+        .habit-card.gold-habit {
+            background: linear-gradient(150deg, rgba(212,166,58,0.15), rgba(180,130,20,0.08));
+            border: 1px solid rgba(212,166,58,0.3);
+            box-shadow: 0 8px 40px rgba(212,166,58,0.1);
+        }
+        .habit-card .hc-icon {
+            font-size: 2.8rem;
+            display: block;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
+        }
+        .gold-habit .hc-icon { filter: drop-shadow(0 0 18px rgba(212,166,58,0.6)); }
+        .habit-card h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.45rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.4rem;
+            letter-spacing: -0.02em;
+        }
+        .habit-card p {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.84rem;
+            color: rgba(255,255,255,0.5);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        .habit-amount {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+        .coffee .habit-amount { color: var(--purple-soft); }
+        .gold-habit .habit-amount {
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-shine));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* ── Streak dots ─────────────────────────────────────── */
+        .streak-grid {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 0.5rem;
+            width: 100%;
+            margin: 1.5rem 0;
+        }
+        .streak-dot {
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background: rgba(212,166,58,0.1);
+            border: 1px solid rgba(212,166,58,0.2);
+            transition: all 0.3s ease;
+        }
+        .streak-dot.filled {
+            background: var(--gold-primary);
+            border-color: var(--gold-primary);
+            box-shadow: 0 0 8px rgba(212,166,58,0.6);
+        }
+
+        /* ── Month summary box ───────────────────────────────── */
+        .month-box {
+            width: 100%;
+            background: linear-gradient(135deg, rgba(212,166,58,0.1), rgba(212,166,58,0.04));
+            border: 1px solid rgba(212,166,58,0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .month-box::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(212,166,58,0.4), transparent);
+        }
+        .month-box .mb-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.72rem;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: rgba(212,166,58,0.8);
+            margin-bottom: 0.6rem;
+        }
+        .month-box .mb-num {
+            font-family: 'Inter', sans-serif;
+            font-size: 3.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-shine));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+        }
+        .month-box .mb-sub {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.4);
+            margin-top: 0.4rem;
+        }
+
+        /* ── Growth timeline tiles ───────────────────────────── */
+        .growth-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            width: 100%;
+            margin-top: 1.8rem;
+        }
+        .growth-tile {
+            border-radius: 18px;
+            padding: 1.6rem 1rem;
+            text-align: center;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.07);
+            transition: transform 0.3s ease, border-color 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        .growth-tile::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold-dark), var(--gold-primary), var(--gold-shine));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .growth-tile:hover {
+            transform: translateY(-6px);
+            border-color: rgba(212,166,58,0.3);
+            box-shadow: 0 12px 40px rgba(212,166,58,0.12);
+        }
+        .growth-tile:hover::before { opacity: 1; }
+        .growth-tile .gt-icon { font-size: 1.8rem; margin-bottom: 0.6rem; display: block; }
+        .growth-tile .gt-year {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.72rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.35);
+            margin-bottom: 0.5rem;
+        }
+        .growth-tile .gt-grams {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-shine));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+            margin-bottom: 0.3rem;
+            letter-spacing: -0.02em;
+        }
+        .growth-tile .gt-value {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            color: rgba(212,166,58,0.6);
+        }
+
+        /* ── Progress bar ────────────────────────────────────── */
+        .progress-wrap {
+            width: 100%; margin-top: 2rem;
+        }
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.35);
+            margin-bottom: 0.5rem;
+        }
+        .progress-track {
+            width: 100%;
+            height: 10px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            border-radius: 50px;
+            width: 0%;
+            background: linear-gradient(90deg, var(--gold-dark), var(--gold-primary), var(--gold-shine));
+            box-shadow: 0 0 12px rgba(212,166,58,0.5);
+            transition: width 2.5s cubic-bezier(0.16,1,0.3,1);
+        }
+        .progress-caption {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.78rem;
+            color: rgba(212,166,58,0.6);
+            text-align: right;
+            margin-top: 0.4rem;
+        }
+
+        /* ── Insight banner ──────────────────────────────────── */
+        .insight-banner {
+            width: 100%;
+            background: linear-gradient(135deg, rgba(212,166,58,0.1), rgba(212,166,58,0.04));
+            border: 1px solid rgba(212,166,58,0.2);
+            border-radius: 16px;
+            padding: 1.5rem 2rem;
+            margin-top: 1.5rem;
+            display: flex; align-items: center; gap: 1.2rem;
+            backdrop-filter: blur(10px);
+        }
+        .insight-banner .ins-icon { font-size: 1.8rem; flex-shrink: 0; }
+        .insight-banner p { font-family: 'Inter', sans-serif; font-size: 0.9rem; color: rgba(255,255,255,0.6); line-height: 1.6; }
+        .insight-banner strong { color: var(--gold-light); font-weight: 600; }
+
+        @media (max-width: 640px) {
+            .habit-grid { grid-template-columns: 1fr; }
+            .growth-grid { grid-template-columns: 1fr; gap: 0.8rem; }
+            .streak-grid { grid-template-columns: repeat(6, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <a href="/" class="back-btn">&larr; Back</a>
+
+    <div class="modal-overlay">
+
+        <!-- SCREEN 1: Prompt -->
+        <section class="screen prompt-screen" id="screen-prompt">
+            <p class="eyebrow" style="position:relative;z-index:2;">The Micro-Habit Revolution</p>
+            <h1 class="scroll-prompt">Scroll down.</h1>
+            <div class="scroll-indicator"></div>
+        </section>
+
+        <!-- SCREEN 2: The Hook -->
+        <section class="screen concept-screen" id="screen-hook">
+            <div class="content-box fade-up">
+                <p class="eyebrow">The Real Barrier to Wealth</p>
+                <h2 class="title">You say you can't<br>afford to <span class="gold-text">invest.</span></h2>
+                <p class="subtitle">But what if you're already spending<br>that money &mdash; one cup at a time?</p>
+                <div class="amount-box">
+                    <span>You spend every single day</span>
+                    <h3>&#8377; 20 &ndash; 50</h3>
+                    <div class="gold-rule"></div>
+                    <span>On coffee, chai, snacks &amp; treats</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SCREEN 3: The Two Habits -->
+        <section class="screen split-screen" id="screen-habits">
+            <div class="content-box fade-up" style="max-width:700px;">
+                <p class="eyebrow">A Tale of Two Habits</p>
+                <h2 class="title">Same money.<br><span class="gold-text">Radically different</span> outcomes.</h2>
+                <div class="habit-grid">
+                    <div class="habit-card coffee">
+                        <span class="hc-icon">&#x2615;</span>
+                        <h3>The Daily Coffee</h3>
+                        <p>Enjoyed in 15 minutes. Forgotten by lunch. Gone forever.</p>
+                        <div class="habit-amount">&#8377;50/day</div>
+                    </div>
+                    <div class="habit-card gold-habit">
+                        <span class="hc-icon">&#x1FA99;</span>
+                        <h3>The Daily Gold SIP</h3>
+                        <p>0.004g of 24K gold added to your vault. Yours forever. Growing always.</p>
+                        <div class="habit-amount">&#8377;50/day</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SCREEN 4: Streak -->
+        <section class="screen" id="screen-streak" style="background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(212,166,58,0.12), transparent 60%), radial-gradient(ellipse 60% 50% at 15% 20%, rgba(123,44,191,0.18), transparent 60%), #05000C;">
+            <div class="content-box fade-up">
+                <p class="eyebrow">The Streak Effect</p>
+                <h2 class="title">Every dot is a day.<br>Every day <span class="gold-text">builds wealth.</span></h2>
+                <p class="subtitle" style="margin-bottom:1.2rem;">30 days of &#8377;50/day Gold SIP</p>
+                <div class="streak-grid" id="streak-dots"></div>
+                <div class="month-box">
+                    <div class="mb-label">After just 30 days</div>
+                    <div class="mb-num">~0.12g</div>
+                    <div class="mb-sub">of 24K gold added to your vault</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SCREEN 5: The Snowball -->
+        <section class="screen gold-theme" id="screen-snowball">
+            <div class="content-box fade-up">
+                <p class="eyebrow">The Compound Effect</p>
+                <h2 class="title">&#8377;50 a day.<br>A <span class="gold-text">fortune</span> over time.</h2>
+                <div class="growth-grid">
+                    <div class="growth-tile">
+                        <span class="gt-icon">&#x1F331;</span>
+                        <div class="gt-year">1 Year</div>
+                        <div class="gt-grams">~1.5g</div>
+                        <div class="gt-value">approx. &#8377;10,700</div>
+                    </div>
+                    <div class="growth-tile">
+                        <span class="gt-icon">&#x1F33F;</span>
+                        <div class="gt-year">3 Years</div>
+                        <div class="gt-grams">~4.5g</div>
+                        <div class="gt-value">approx. &#8377;37,000</div>
+                    </div>
+                    <div class="growth-tile">
+                        <span class="gt-icon">&#x1F333;</span>
+                        <div class="gt-year">5 Years</div>
+                        <div class="gt-grams">~7.5g</div>
+                        <div class="gt-value">approx. &#8377;67,000</div>
+                    </div>
+                </div>
+                <div class="progress-wrap">
+                    <div class="progress-label">
+                        <span>0g</span>
+                        <span>7.5g gold over 5 years</span>
+                    </div>
+                    <div class="progress-track">
+                        <div class="progress-fill" id="accum-bar"></div>
+                    </div>
+                    <div class="progress-caption">18,250 cups of coffee &rarr; converted to pure gold</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SCREEN 6: Conclusion -->
+        <section class="screen conclusion-screen" id="screen-conclusion">
+            <div class="content-box fade-up">
+                <div class="shield-icon">&#x2728;</div>
+                <p class="eyebrow">The Takeaway</p>
+                <h2 class="title">Wealth isn't built by<br>the <span class="gold-text">rich.</span></h2>
+                <div class="gold-rule"></div>
+                <p class="conclusion-text">It's built by people with the right daily habits.</p>
+                <p class="conclusion-text strong">Swap one habit. Change your financial future forever.</p>
+                <button class="cta-button" onclick="window.location.href='/'">Start Your Daily Gold SIP &rarr;</button>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        // Build streak dots
+        const grid = document.getElementById('streak-dots');
+        for (let i = 0; i < 30; i++) {
+            const d = document.createElement('div');
+            d.classList.add('streak-dot');
+            grid.appendChild(d);
+        }
+
+        const fadeUpEls    = document.querySelectorAll('.fade-up');
+        const scrollPrompt = document.querySelector('.scroll-prompt');
+        const scrollLine   = document.querySelector('.scroll-indicator');
+        const overlay      = document.querySelector('.modal-overlay');
+
+        let streakDone = false;
+
+        const obs = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('active');
+                    if (e.target.closest('#screen-streak') && !streakDone) {
+                        streakDone = true;
+                        document.querySelectorAll('.streak-dot').forEach((d, i) => {
+                            setTimeout(() => d.classList.add('filled'), i * 60);
+                        });
+                    }
+                    if (e.target.closest('#screen-snowball')) {
+                        const bar = document.getElementById('accum-bar');
+                        if (bar) setTimeout(() => bar.style.width = '100%', 400);
+                    }
+                } else {
+                    e.target.classList.remove('active');
+                    if (e.target.closest('#screen-snowball')) {
+                        const bar = document.getElementById('accum-bar');
+                        if (bar) bar.style.width = '0%';
+                    }
+                }
+            });
+        }, { threshold: 0.25 });
+
+        fadeUpEls.forEach(el => obs.observe(el));
+
+        overlay.addEventListener('scroll', () => {
+            const gone = overlay.scrollTop > 60;
+            scrollPrompt.style.opacity = gone ? '0' : '0.92';
+            scrollLine.style.opacity   = gone ? '0' : '1';
+            scrollPrompt.style.transition = 'opacity 0.6s ease';
+            scrollLine.style.transition   = 'opacity 0.6s ease';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,242 @@
+/* =========================================================
+   STYLE 1 — Minimalist Monoline (Editorial Fintech)
+   Selector: html.style-1
+   Philosophy: Light canvas, thin purple outlines,
+               gold ONLY on wealth/value elements.
+   ========================================================= */
+
+html.style-1 body,
+html.style-1 html {
+    background-color: #FFFFFF;
+}
+
+/* Override CSS variables at root level */
+html.style-1 {
+    --purple-dark: #FFFFFF;
+    --purple-mid: #F8FAFC;
+    --purple-light: #7B2CBF;
+    --text-main: #0F172A;
+    --text-muted: #64748B;
+    --gold-glow: rgba(212, 166, 58, 0.18);
+}
+
+html.style-1 .modal-overlay {
+    background-color: #FFFFFF;
+}
+
+/* ── All screen backgrounds → crisp off-white ─────────── */
+html.style-1 .screen,
+html.style-1 .prompt-screen,
+html.style-1 .concept-screen,
+html.style-1 .split-screen,
+html.style-1 .gold-theme,
+html.style-1 .conclusion-screen,
+html.style-1 #screen-streak,
+html.style-1 #screen-charges,
+html.style-1 #screen-hook,
+html.style-1 #screen-purity,
+html.style-1 #screen-transparency {
+    background: #F8FAFC !important;
+}
+
+/* Alternate screens get the faintest purple tint */
+html.style-1 .concept-screen,
+html.style-1 #screen-charges,
+html.style-1 #screen-streak {
+    background: #F7F2FA !important;
+}
+
+/* ── Typography ─────────────────────────────────────────── */
+html.style-1 .scroll-prompt { color: #0F172A; opacity: 0.7; }
+html.style-1 .scroll-indicator { background: linear-gradient(transparent, #7B2CBF); }
+html.style-1 .title { color: #0F172A; }
+html.style-1 .subtitle { color: #64748B; }
+html.style-1 .gold-text { color: #D4A63A; text-shadow: none; }
+html.style-1 .purple-light { color: #7B2CBF; }
+html.style-1 .scenario-title { color: #0F172A; }
+html.style-1 .insight { color: #475569; }
+html.style-1 .insight strong { color: #DC2626; }
+html.style-1 .conclusion-text { color: #475569; }
+html.style-1 .conclusion-text.strong { color: #0F172A; }
+
+/* ── Amount box → white card, thin purple border ────────── */
+html.style-1 .amount-box {
+    background: #FFFFFF;
+    border: 1.5px solid #7B2CBF;
+    box-shadow: 4px 4px 0px #7B2CBF;
+    backdrop-filter: none;
+}
+html.style-1 .amount-box span { color: #64748B; }
+html.style-1 .amount-box h3 { color: #D4A63A; }
+
+/* ── Choice cards ────────────────────────────────────────── */
+html.style-1 .choice {
+    background: #FFFFFF;
+    border: 1.5px solid #E2E8F0;
+    box-shadow: none;
+}
+html.style-1 .cash-choice { border-top: 2.5px solid #7B2CBF; }
+html.style-1 .gold-choice { border-top: 2.5px solid #D4A63A; background: #FFFCF0; }
+html.style-1 .choice h3 { color: #0F172A; }
+html.style-1 .choice p { color: #64748B; }
+
+/* ── Comparison cards ────────────────────────────────────── */
+html.style-1 .comparison-card {
+    background: #FFFFFF;
+    border: 1.5px solid #E2E8F0;
+    box-shadow: none;
+}
+html.style-1 .comparison-card.gold-border {
+    background: #FFFCF0;
+    border: 1.5px solid #D4A63A;
+    box-shadow: 4px 4px 0px rgba(212,166,58,0.3);
+}
+html.style-1 .year {
+    background: #F1F5F9;
+    color: #0F172A;
+}
+html.style-1 .year-block p { color: #64748B; }
+html.style-1 .vs-divider { color: #7B2CBF; }
+html.style-1 .value-up { color: #D4A63A; }
+
+/* ── CTA Button ──────────────────────────────────────────── */
+html.style-1 .cta-button {
+    background: #D4A63A;
+    color: #0F172A;
+    box-shadow: 4px 4px 0px rgba(212,166,58,0.4);
+}
+
+/* ── Coffee module ───────────────────────────────────────── */
+html.style-1 .daily-card {
+    background: #FFFFFF;
+    border: 1.5px solid #E2E8F0;
+}
+html.style-1 .daily-card.coffee-card { border-left: 3px solid #7B2CBF; }
+html.style-1 .daily-card.gold-card   { border-left: 3px solid #D4A63A; }
+html.style-1 .daily-info h3 { color: #0F172A; }
+html.style-1 .daily-info p  { color: #64748B; }
+html.style-1 .coffee-card .daily-amount { color: #7B2CBF; }
+
+html.style-1 .streak-dot { background: #E2E8F0; border-color: #CBD5E1; }
+html.style-1 .streak-dot.filled {
+    background: #D4A63A;
+    border-color: #D4A63A;
+    box-shadow: 0 0 4px rgba(212,166,58,0.5);
+}
+
+html.style-1 .sip-highlight {
+    background: #FFFFFF;
+    border: 1.5px solid #D4A63A;
+    box-shadow: 4px 4px 0px rgba(212,166,58,0.2);
+}
+html.style-1 .sip-highlight h3 { color: #0F172A; }
+html.style-1 .sip-highlight p  { color: #64748B; }
+
+html.style-1 .timeline-tile {
+    background: #FFFFFF;
+    border: 1.5px solid #E2E8F0;
+}
+html.style-1 .timeline-tile:hover { border-color: #D4A63A; }
+html.style-1 .timeline-tile .tile-year  { color: #64748B; }
+html.style-1 .timeline-tile .tile-grams { color: #D4A63A; }
+html.style-1 .timeline-tile .tile-value { color: #7B2CBF; }
+html.style-1 .accum-label { color: #64748B; }
+html.style-1 .accum-bar-wrapper { background: #E2E8F0; }
+
+/* ── 24K module ──────────────────────────────────────────── */
+html.style-1 .purity-block.jewellery {
+    background: #FFFFFF;
+    border: 1.5px solid #E2E8F0;
+}
+html.style-1 .purity-block.digital {
+    background: #FFFCF0;
+    border: 1.5px solid #D4A63A;
+    box-shadow: 4px 4px 0px rgba(212,166,58,0.2);
+}
+html.style-1 .purity-label  { color: #64748B; }
+html.style-1 .purity-percent { color: #64748B; }
+html.style-1 .jewellery .purity-karat { color: #94A3B8; -webkit-text-fill-color: #94A3B8; }
+html.style-1 .purity-fill-wrap { background: #E2E8F0; }
+html.style-1 .jewellery .purity-fill { background: #CBD5E1; }
+html.style-1 .jewellery .purity-badge { background: #F1F5F9; color: #64748B; }
+
+html.style-1 .charge-row {
+    background: #FFFFFF;
+    border: 1.5px solid #E2E8F0;
+}
+html.style-1 .charge-label  { color: #475569; }
+
+html.style-1 .compare-table { border-color: #E2E8F0; }
+html.style-1 .compare-row   { border-bottom-color: #F1F5F9; }
+html.style-1 .compare-row.header-row { background: #F8FAFC; }
+html.style-1 .compare-cell  { color: #475569; border-right-color: #F1F5F9; }
+html.style-1 .compare-cell.header { color: #0F172A; }
+
+html.style-1 .meter-wrap { background: #E2E8F0; }
+html.style-1 .meter-fill { background: linear-gradient(90deg, #7B2CBF, #D4A63A); box-shadow: none; }
+html.style-1 .meter-label { color: #64748B; }
+
+/* Back button override */
+html.style-1 .back-btn {
+    background: rgba(123,44,191,0.08);
+    color: #7B2CBF;
+    border: 1px solid rgba(123,44,191,0.2);
+}
+
+/* ── High-Contrast Readability Enhancements for Style 1 ── */
+html.style-1 .scroll-prompt { color: #0F172A !important; opacity: 1 !important; }
+html.style-1 .title { color: #0F172A !important; }
+html.style-1 .subtitle { color: #475569 !important; }
+html.style-1 .eyebrow { color: #8C681F !important; }
+html.style-1 .eyebrow::before, html.style-1 .eyebrow::after { background: linear-gradient(90deg, transparent, #8C681F) !important; }
+html.style-1 .eyebrow::after { background: linear-gradient(90deg, #8C681F, transparent) !important; }
+html.style-1 .gold-text { background: none !important; -webkit-text-fill-color: #8C681F !important; color: #8C681F !important; text-shadow: none !important; }
+html.style-1 .purple-light { color: #7B2CBF !important; text-shadow: none !important; }
+
+/* Time Machine adjustments */
+html.style-1 .data-row .row-label { color: #475569 !important; }
+html.style-1 .data-row .row-val { color: #8C681F !important; }
+html.style-1 .data-row .row-val.dim { color: #334155 !important; }
+html.style-1 .big-rupee { color: #8C681F !important; }
+html.style-1 .big-grams { background: none !important; -webkit-text-fill-color: #8C681F !important; color: #8C681F !important; }
+html.style-1 .tl-block .tl-label { color: #475569 !important; }
+html.style-1 .tl-block .tl-num { color: #0F172A !important; }
+html.style-1 .tl-block.gold-block .tl-num { background: none !important; -webkit-text-fill-color: #8C681F !important; color: #8C681F !important; }
+html.style-1 .tl-block .tl-sub { color: #475569 !important; }
+html.style-1 .tl-block.gold-block .tl-sub { color: #7A5310 !important; }
+html.style-1 .insight-banner p { color: #334155 !important; }
+html.style-1 .insight-banner strong { color: #8C681F !important; }
+html.style-1 .timeline-screen p { color: #DC2626 !important; }
+html.style-1 .gold-theme p { color: #8C681F !important; }
+html.style-1 .timeline-screen span, html.style-1 .gold-theme span { color: #475569 !important; }
+
+/* Coffee module adjustments */
+html.style-1 .habit-card h3 { color: #0F172A !important; }
+html.style-1 .habit-card p { color: #475569 !important; }
+html.style-1 .coffee .habit-amount { color: #7B2CBF !important; }
+html.style-1 .gold-habit .habit-amount { background: none !important; -webkit-text-fill-color: #8C681F !important; color: #8C681F !important; }
+html.style-1 .month-box .mb-label { color: #8C681F !important; }
+html.style-1 .month-box .mb-num { background: none !important; -webkit-text-fill-color: #8C681F !important; color: #8C681F !important; }
+html.style-1 .month-box .mb-sub { color: #475569 !important; }
+html.style-1 .growth-tile .gt-year { color: #475569 !important; }
+html.style-1 .growth-tile .gt-grams { background: none !important; -webkit-text-fill-color: #8C681F !important; color: #8C681F !important; }
+html.style-1 .growth-tile .gt-value { color: #7B2CBF !important; }
+html.style-1 .progress-label span { color: #475569 !important; }
+html.style-1 .progress-caption { color: #8C681F !important; }
+
+/* 24K Purity adjustments */
+html.style-1 .purity-label { color: #475569 !important; }
+html.style-1 .purity-pct { color: #475569 !important; }
+html.style-1 .pure .purity-pct { color: #8C681F !important; }
+html.style-1 .pure .purity-karat { background: none !important; -webkit-text-fill-color: #8C681F !important; color: #8C681F !important; }
+html.style-1 .charge-name { color: #334155 !important; }
+html.style-1 .charge-val { color: #0F172A !important; }
+html.style-1 .charge-val.red { color: #DC2626 !important; }
+html.style-1 .charge-val.gold { color: #8C681F !important; }
+html.style-1 .gold-row .charge-name { color: #8C681F !important; }
+html.style-1 .cmp-cell { color: #334155 !important; }
+html.style-1 .cmp-cell.head-cell { color: #0F172A !important; }
+html.style-1 .cmp-cell.gold-col { color: #8C681F !important; }
+html.style-1 .cmp-cell.red-col { color: #DC2626 !important; }
+html.style-1 .meter-labels span { color: #475569 !important; }
+html.style-1 .meter-caption { color: #8C681F !important; }

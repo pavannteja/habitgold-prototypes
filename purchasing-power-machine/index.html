@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>(function(){var p=new URLSearchParams(location.search),s=p.get('style');if(s)document.documentElement.classList.add('style-'+s);})();</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Purchasing Power Time Machine &mdash; HabitGold</title>
+    <meta name="description" content="Discover how gold acts as an inflation shield to protect your purchasing power over time.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/purchasing-power-machine/style.css">
+    <link rel="stylesheet" href="/styles/style-1.css">
+    <link rel="stylesheet" href="/styles/style-2.css">
+    <link rel="stylesheet" href="/styles/style-3.css">
+    <style>
+        /* Back button */
+        .back-btn {
+            position: fixed;
+            top: 1.4rem; left: 1.4rem;
+            z-index: 100;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.5rem 1.1rem;
+            border-radius: 50px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-decoration: none;
+            background: rgba(255,255,255,0.06);
+            color: rgba(255,255,255,0.6);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.25s ease;
+            backdrop-filter: blur(14px);
+            letter-spacing: 0.5px;
+        }
+        .back-btn:hover {
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            border-color: rgba(255,255,255,0.2);
+            transform: translateX(-2px);
+        }
+
+        /* ── Comparison table rows (premium glass) ───────────── */
+        .data-table {
+            width: 100%;
+            background: #130328;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 20px;
+            overflow: hidden;
+            margin-top: 2rem;
+        }
+        .gold-card .data-table {
+            background: #EED9B3;
+            border: 1px solid rgba(212,166,58,0.3);
+        }
+        .gold-card .data-row {
+            border-bottom: 1px solid rgba(19,5,38,0.15) !important;
+        }
+        .gold-card .data-row:last-child {
+            border-bottom: none !important;
+        }
+        .data-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.1rem 1.8rem;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            transition: background 0.2s ease;
+        }
+        .data-row:last-child { border-bottom: none; }
+        .data-row:hover { background: rgba(255,255,255,0.03); }
+        .data-row .row-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.88rem;
+            color: rgba(255,255,255,0.5);
+            font-weight: 400;
+        }
+        .data-row .row-val {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--gold-primary);
+            letter-spacing: -0.02em;
+        }
+        .data-row .row-val.dim {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.35);
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+        }
+        .data-row .row-val.bad { color: #FF7B7B; }
+
+        /* ── Two big choice cards (reference image style) ────── */
+        .choice-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+            width: 100%;
+            margin-top: 2rem;
+        }
+        .choice-card {
+            border-radius: 22px;
+            padding: 2rem 1.8rem;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.4s ease;
+            cursor: default;
+        }
+        .choice-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+        }
+        .choice-card:hover { transform: translateY(-6px) scale(1.01); }
+
+        .choice-card.cash {
+            background: #1B0836;
+            border: 1px solid rgba(168,85,247,0.3);
+            box-shadow: 0 8px 40px rgba(0,0,0,0.3);
+        }
+        .choice-card.cash:hover {
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            border-color: rgba(168,85,247,0.5);
+        }
+
+        .choice-card.gold-card {
+            background: #ECC35D;
+            border: 1px solid #B08215;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.25);
+        }
+        .choice-card.gold-card h3 {
+            color: #130526 !important;
+        }
+        .choice-card.gold-card p {
+            color: #130526 !important;
+        }
+        .choice-card.gold-card strong {
+            color: #130526 !important;
+            font-weight: 800 !important;
+        }
+        .choice-card.gold-card .row-label {
+            color: #3C2800 !important;
+        }
+        .choice-card.gold-card .row-val {
+            color: #130526 !important;
+        }
+        .choice-card.gold-card .row-val.dim {
+            color: #3C2800 !important;
+        }
+        .choice-card.gold-card:hover {
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            border-color: rgba(212,166,58,0.6);
+        }
+
+        .choice-card .card-icon {
+            font-size: 2.8rem;
+            display: block;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4));
+        }
+        .gold-card .card-icon { filter: drop-shadow(0 0 20px rgba(212,166,58,0.7)); }
+
+        .choice-card h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+            color: #fff;
+            letter-spacing: -0.02em;
+        }
+        .choice-card p {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.55);
+            line-height: 1.6;
+            margin-bottom: 1.2rem;
+        }
+
+        /* ── Big number display ──────────────────────────────── */
+        .big-rupee {
+            font-family: 'Inter', sans-serif;
+            font-size: 2.1rem;
+            font-weight: 800;
+            color: var(--gold-primary);
+            letter-spacing: -0.03em;
+        }
+        .big-grams {
+            font-family: 'Inter', sans-serif;
+            font-size: 2.1rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-shine));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.03em;
+        }
+
+        /* ── Timeline reveal bars ────────────────────────────── */
+        .reveal-bar-wrap {
+            width: 100%;
+            background: rgba(255,255,255,0.06);
+            border-radius: 50px;
+            height: 10px;
+            overflow: hidden;
+            margin: 0.4rem 0;
+        }
+        .reveal-bar {
+            height: 100%;
+            border-radius: 50px;
+            width: 0%;
+            background: linear-gradient(90deg, var(--gold-dark), var(--gold-primary), var(--gold-shine));
+            box-shadow: 0 0 10px rgba(212,166,58,0.5);
+            transition: width 2.5s cubic-bezier(0.16,1,0.3,1);
+        }
+
+        /* ── Timeline result section ─────────────────────────── */
+        .timeline-split {
+            display: flex;
+            gap: 1.2rem;
+            width: 100%;
+            margin-top: 1.5rem;
+        }
+        .tl-block {
+            flex: 1;
+            border-radius: 20px;
+            padding: 1.8rem 1.5rem;
+            text-align: center;
+            transition: transform 0.35s ease;
+        }
+        .tl-block:hover { transform: translateY(-4px); }
+        .tl-block.cash-block {
+            background: #1B0836;
+            border: 1px solid rgba(168,85,247,0.2);
+        }
+        .tl-block.gold-block {
+            background: #ECC35D;
+            border: 1px solid #B08215;
+            box-shadow: 0 0 30px rgba(0,0,0,0.2);
+        }
+        .tl-block .tl-label {
+            font-size: 0.72rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.4);
+            margin-bottom: 0.8rem;
+            font-family: 'Inter', sans-serif;
+        }
+        .tl-block .tl-num {
+            font-family: 'Inter', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 0.4rem;
+            letter-spacing: -0.03em;
+        }
+        .tl-block.gold-block .tl-num {
+            background: none !important;
+            -webkit-text-fill-color: #8C681F !important;
+            color: #8C681F !important;
+        }
+        .tl-block .tl-sub {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.35);
+            font-family: 'Inter', sans-serif;
+        }
+        .tl-block.gold-block .tl-label {
+            color: #5C4E38 !important;
+        }
+        .tl-block.gold-block .tl-sub { color: #7A5310 !important; }
+
+        /* ── Insight banner ──────────────────────────────────── */
+        .insight-banner {
+            width: 100%;
+            background: #1B0836;
+            border: 1px solid rgba(212,166,58,0.25);
+            border-radius: 16px;
+            padding: 1.5rem 2rem;
+            margin-top: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+        }
+        .insight-banner .ins-icon { font-size: 1.8rem; flex-shrink: 0; }
+        .insight-banner p {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.92rem;
+            color: rgba(255,255,255,0.65);
+            line-height: 1.6;
+        }
+        .insight-banner strong { color: var(--gold-light); font-weight: 600; }
+
+        /* ── Mobile ──────────────────────────────────────────── */
+        @media (max-width: 640px) {
+            .choice-grid { grid-template-columns: 1fr; gap: 1rem !important; margin-top: 1rem !important; }
+            .timeline-split { flex-direction: column; gap: 0.8rem; }
+            .tl-block .tl-num { font-size: 1.8rem; }
+
+            /* Mobile-specific single-page compaction for Screen 3 */
+            #screen-split {
+                padding: 1.5rem 1.2rem !important;
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: center !important;
+                align-items: center !important;
+                height: 100vh !important;
+                min-height: 100vh !important;
+                overflow: hidden !important;
+            }
+            #screen-split .content-box {
+                max-width: 100% !important;
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: center !important;
+                height: 100% !important;
+            }
+            #screen-split .eyebrow {
+                margin-bottom: 0.5rem !important;
+            }
+            #screen-split .title {
+                font-size: clamp(1.8rem, 5.5vw, 2.2rem) !important;
+                margin-bottom: 1.2rem !important;
+                line-height: 1.2 !important;
+            }
+            .choice-card {
+                padding: 1.2rem 1.4rem !important;
+                border-radius: 18px !important;
+            }
+            .choice-card .card-icon {
+                font-size: 2.2rem !important;
+                margin-bottom: 0.6rem !important;
+            }
+            .choice-card h3 {
+                font-size: 1.35rem !important;
+                margin-bottom: 0.4rem !important;
+            }
+            .choice-card p {
+                font-size: 0.82rem !important;
+                line-height: 1.5 !important;
+                margin-bottom: 0.8rem !important;
+            }
+            .choice-card .data-table {
+                margin-top: 0.8rem !important;
+                border-radius: 14px !important;
+            }
+            .choice-card .data-row {
+                padding: 0.8rem 1.1rem !important;
+            }
+            .choice-card .data-row .row-label {
+                font-size: 0.78rem !important;
+            }
+            .choice-card .data-row .row-val {
+                font-size: 1.15rem !important;
+            }
+            .choice-card .data-row .row-val.dim {
+                font-size: 0.95rem !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="/" class="back-btn">&larr; Back</a>
+
+    <div class="modal-overlay">
+
+        <!-- SCREEN 1: Prompt -->
+        <section class="screen prompt-screen" id="screen-prompt">
+            <p class="eyebrow" style="position:relative;z-index:2;">The Inflation Shield</p>
+            <h1 class="scroll-prompt">Scroll down.</h1>
+            <div class="scroll-indicator"></div>
+        </section>
+
+        <!-- SCREEN 2: The Setup -->
+        <section class="screen concept-screen" id="screen-intro">
+            <div class="content-box fade-up">
+                <p class="eyebrow">10 Years Ago &mdash; 2016</p>
+                <h2 class="title">You held <span class="gold-text">&#8377;&thinsp;10,000</span><br>in your hand.</h2>
+                <p class="subtitle">A perfectly good amount of money.<br>What did you do with it?</p>
+                <div class="amount-box">
+                    <span>Your capital</span>
+                    <h3>&#8377; 10,000</h3>
+                    <div class="gold-rule"></div>
+                    <span>In the year 2016</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SCREEN 3: Two Choices -->
+        <section class="screen split-screen" id="screen-split">
+            <div class="content-box fade-up" style="max-width:740px;">
+                <p class="eyebrow">The Decision</p>
+                <h2 class="title">Two choices.<br><span class="gold-text">One outcome</span> that matters.</h2>
+                <div class="choice-grid">
+                    <div class="choice-card cash">
+                        <span class="card-icon">&#x1F4B5;</span>
+                        <h3>Keep it as Cash</h3>
+                        <p>Your &#8377;10,000 note goes into a drawer. Safe, familiar, always accessible.</p>
+                        <div class="data-table">
+                            <div class="data-row">
+                                <span class="row-label">Nominal value in 2026</span>
+                                <span class="row-val">&#8377;10,000</span>
+                            </div>
+                            <div class="data-row">
+                                <span class="row-label">Real purchasing power</span>
+                                <span class="row-val dim">?</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="choice-card gold-card">
+                        <span class="card-icon">&#x1F3C5;</span>
+                        <h3>Buy Gold</h3>
+                        <p>At &#8377;2,800/gram in 2016, your &#8377;10,000 buys <strong style="color:#130526; font-weight:800;">3.57 grams of gold.</strong></p>
+                        <div class="data-table" style="border-color:rgba(212,166,58,0.2);">
+                            <div class="data-row">
+                                <span class="row-label">Gold purchased in 2016</span>
+                                <span class="row-val">3.57 g</span>
+                            </div>
+                            <div class="data-row">
+                                <span class="row-label">Value in 2026</span>
+                                <span class="row-val dim">?</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SCREEN 4: The Cash Reality -->
+        <section class="screen timeline-screen" id="screen-cash-today">
+            <div class="content-box fade-up" style="max-width:680px;">
+                <p class="eyebrow">Fast Forward to Today</p>
+                <h2 class="title">Your cash is <span style="color:#FF7B7B;">worth less</span><br>every single year.</h2>
+                <p class="subtitle">Inflation silently erodes what your money can buy.</p>
+                <div class="timeline-split">
+                    <div class="tl-block cash-block">
+                        <div class="tl-label">2016 &mdash; What you had</div>
+                        <div class="tl-num">&#x1F6D2; &#x1F6D2; &#x1F6D2;</div>
+                        <div class="tl-sub">Full cart of groceries</div>
+                    </div>
+                    <div class="tl-block cash-block">
+                        <div class="tl-label">2026 &mdash; Same money buys</div>
+                        <div class="tl-num">&#x1F6D2;</div>
+                        <div class="tl-sub">Barely half a cart</div>
+                    </div>
+                </div>
+                <div class="insight-banner" style="border-color:rgba(255,100,100,0.2); background:rgba(255,100,100,0.06);">
+                    <span class="ins-icon">&#x26A0;&#xFE0F;</span>
+                    <p>Your &#8377;10,000 is still &#8377;10,000. But India's inflation has consumed roughly <strong style="color:#FF7B7B;">40% of its real value.</strong></p>
+                </div>
+                <div style="width:100%; margin-top:1.8rem;">
+                    <div style="display:flex; justify-content:space-between; font-size:0.78rem; color:rgba(255,255,255,0.35); margin-bottom:0.5rem; font-family:'Inter',sans-serif;">
+                        <span>Purchasing power 2016</span>
+                        <span>Today</span>
+                    </div>
+                    <div class="reveal-bar-wrap">
+                        <div class="reveal-bar" id="cash-bar" style="width:60%; background:linear-gradient(90deg,#FF7B7B,#c0392b);"></div>
+                    </div>
+                    <p style="font-size:0.78rem; color:rgba(255,100,100,0.6); margin-top:0.4rem; text-align:right; font-family:'Inter',sans-serif;">40% purchasing power lost</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SCREEN 5: The Gold Reality -->
+        <section class="screen gold-theme" id="screen-gold-today">
+            <div class="content-box fade-up" style="max-width:680px;">
+                <p class="eyebrow">Meanwhile, Your Gold&hellip;</p>
+                <h2 class="title">3.57 grams grew into<br><span class="gold-text">&#8377; 27,000+</span></h2>
+                <p class="subtitle">The same physical gold. Just worth far more.</p>
+                <div class="timeline-split">
+                    <div class="tl-block cash-block">
+                        <div class="tl-label">2016 &mdash; Your gold</div>
+                        <div class="tl-num" style="font-size:2.8rem;">&#x1FA99;</div>
+                        <div class="tl-sub">3.57g at &#8377;2,800/g</div>
+                    </div>
+                    <div class="tl-block gold-block">
+                        <div class="tl-label">2026 &mdash; Value today</div>
+                        <div class="tl-num">&#8377;27,000+</div>
+                        <div class="tl-sub">At &#8377;7,500+/g today</div>
+                    </div>
+                </div>
+                <div class="insight-banner" style="margin-top:1.5rem;">
+                    <span class="ins-icon">&#x2728;</span>
+                    <p>Gold didn't just protect your wealth &mdash; it <strong>grew it by 2.7&times;</strong> while cash lost 40% of its real value.</p>
+                </div>
+                <div style="width:100%; margin-top:1.8rem;">
+                    <div style="display:flex; justify-content:space-between; font-size:0.78rem; color:rgba(255,255,255,0.35); margin-bottom:0.5rem; font-family:'Inter',sans-serif;">
+                        <span>&#8377;10,000 invested in 2016</span>
+                        <span>&#8377;27,000+ today</span>
+                    </div>
+                    <div class="reveal-bar-wrap">
+                        <div class="reveal-bar" id="gold-bar"></div>
+                    </div>
+                    <p style="font-size:0.78rem; color:rgba(212,166,58,0.7); margin-top:0.4rem; text-align:right; font-family:'Inter',sans-serif;">+170% return over 10 years</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SCREEN 6: Conclusion -->
+        <section class="screen conclusion-screen" id="screen-conclusion">
+            <div class="content-box fade-up">
+                <div class="shield-icon">&#x1F6E1;&#xFE0F;</div>
+                <p class="eyebrow">The Verdict</p>
+                <h2 class="title">Gold is not an investment.<br>It's a <span class="gold-text">shield.</span></h2>
+                <div class="gold-rule"></div>
+                <p class="conclusion-text">Gold isn't a risky stock market play.</p>
+                <p class="conclusion-text strong">It's a necessary shield to protect<br>the money you already have.</p>
+                <button class="cta-button" onclick="window.location.href='/'">Start Shielding Your Wealth &rarr;</button>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        const fadeUpEls    = document.querySelectorAll('.fade-up');
+        const scrollPrompt = document.querySelector('.scroll-prompt');
+        const scrollLine   = document.querySelector('.scroll-indicator');
+        const overlay      = document.querySelector('.modal-overlay');
+
+        const obs = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('active');
+                    if (e.target.closest('#screen-gold-today')) {
+                        const b = document.getElementById('gold-bar');
+                        if (b) setTimeout(() => b.style.width = '100%', 400);
+                    }
+                } else {
+                    e.target.classList.remove('active');
+                    if (e.target.closest('#screen-gold-today')) {
+                        const b = document.getElementById('gold-bar');
+                        if (b) b.style.width = '0%';
+                    }
+                }
+            });
+        }, { threshold: 0.25 });
+
+        fadeUpEls.forEach(el => obs.observe(el));
+
+        overlay.addEventListener('scroll', () => {
+            const gone = overlay.scrollTop > 60;
+            scrollPrompt.style.opacity = gone ? '0' : '0.92';
+            scrollLine.style.opacity   = gone ? '0' : '1';
+            scrollPrompt.style.transition = 'opacity 0.6s ease';
+            scrollLine.style.transition   = 'opacity 0.6s ease';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,247 @@
+/* =========================================================
+   STYLE 3 — High-Contrast Premium (Black Card)
+   Selector: html.style-3
+   Philosophy: Primary Dark #5A1F8F background. White &
+               Purple Soft 200 text. Gold explodes against
+               the dark purple — natural glow, no heavy FX.
+   ========================================================= */
+
+html.style-3 body,
+html.style-3 html {
+    background-color: #3d1270;
+}
+
+html.style-3 {
+    --purple-dark: #3d1270;
+    --purple-mid: #5A1F8F;
+    --purple-light: #C084FC;
+    --gold-primary: #D4A63A;
+    --gold-light: #F5D682;
+    --gold-dark: #8c681f;
+    --text-main: #FFFFFF;
+    --text-muted: #E3CEEE;
+    --gold-glow: rgba(212, 166, 58, 0.55);
+}
+
+html.style-3 .modal-overlay {
+    background-color: #3d1270;
+}
+
+/* ── Screen backgrounds — rich, dark purple tiers ────────── */
+html.style-3 .screen {
+    background: #3d1270 !important;
+}
+html.style-3 .prompt-screen {
+    background: linear-gradient(160deg, #2a0d52, #3d1270) !important;
+}
+html.style-3 .concept-screen,
+html.style-3 #screen-hook {
+    background: linear-gradient(135deg, #5A1F8F, #3d1270) !important;
+}
+html.style-3 .split-screen,
+html.style-3 #screen-daily,
+html.style-3 #screen-purity {
+    background: #3d1270 !important;
+}
+html.style-3 .gold-theme,
+html.style-3 #screen-timelapse,
+html.style-3 #screen-transparency {
+    background: linear-gradient(160deg, #3d1270, #2a1a05) !important;
+}
+html.style-3 #screen-streak,
+html.style-3 #screen-charges {
+    background: linear-gradient(135deg, #5A1F8F, #3d1270) !important;
+}
+html.style-3 .conclusion-screen {
+    background: linear-gradient(160deg, #2a0d52, #4a1a00) !important;
+}
+
+/* ── Typography ─────────────────────────────────────────── */
+html.style-3 .scroll-prompt { color: #E3CEEE; }
+html.style-3 .scroll-indicator { background: linear-gradient(transparent, #D4A63A); }
+html.style-3 .title { color: #FFFFFF; }
+html.style-3 .subtitle { color: #E3CEEE; }
+html.style-3 .gold-text {
+    color: #F5D682;
+    text-shadow: 0 0 30px rgba(212,166,58,0.7), 0 0 60px rgba(212,166,58,0.3);
+}
+html.style-3 .purple-light { color: #C084FC; }
+html.style-3 .scenario-title { color: #FFFFFF; }
+html.style-3 .insight { color: #E3CEEE; }
+html.style-3 .insight strong { color: #FF9494; }
+html.style-3 .conclusion-text { color: #E3CEEE; }
+html.style-3 .conclusion-text.strong { color: #FFFFFF; }
+
+/* ── Amount box — luminous gold on dark ─────────────────── */
+html.style-3 .amount-box {
+    background: rgba(90, 31, 143, 0.5);
+    border: 1px solid rgba(212,166,58,0.5);
+    box-shadow: 0 0 40px rgba(212,166,58,0.15), inset 0 1px 0 rgba(255,255,255,0.05);
+    backdrop-filter: blur(8px);
+}
+html.style-3 .amount-box span { color: #E3CEEE; }
+html.style-3 .amount-box h3 {
+    color: #F5D682;
+    text-shadow: 0 0 20px rgba(212,166,58,0.6);
+}
+
+/* ── Choice cards — elevated dark panels ────────────────── */
+html.style-3 .choice {
+    background: rgba(90, 31, 143, 0.4);
+    border: 1px solid rgba(255,255,255,0.08);
+}
+html.style-3 .cash-choice { border-top: 3px solid #C084FC; }
+html.style-3 .gold-choice {
+    border-top: 3px solid #D4A63A;
+    background: rgba(212,166,58,0.08);
+    box-shadow: 0 0 20px rgba(212,166,58,0.1);
+}
+html.style-3 .choice h3 { color: #FFFFFF; }
+html.style-3 .choice p  { color: #E3CEEE; }
+
+/* ── Comparison cards ────────────────────────────────────── */
+html.style-3 .comparison-card {
+    background: rgba(90, 31, 143, 0.35);
+    border: 1px solid rgba(255,255,255,0.08);
+}
+html.style-3 .comparison-card.gold-border {
+    background: rgba(212,166,58,0.06);
+    border-color: rgba(212,166,58,0.5);
+    box-shadow: 0 0 50px rgba(212,166,58,0.2), inset 0 0 30px rgba(212,166,58,0.03);
+}
+html.style-3 .year { background: rgba(255,255,255,0.08); color: #E3CEEE; }
+html.style-3 .year-block p { color: #E3CEEE; }
+html.style-3 .vs-divider { color: #C084FC; }
+html.style-3 .value-up {
+    color: #F5D682;
+    text-shadow: 0 0 20px rgba(212,166,58,0.6);
+}
+
+/* ── CTA Button — blazing gold ───────────────────────────── */
+html.style-3 .cta-button {
+    background: linear-gradient(135deg, #D4A63A, #F5D682);
+    color: #2a0d52;
+    box-shadow: 0 0 30px rgba(212,166,58,0.5), 0 10px 30px rgba(0,0,0,0.3);
+}
+html.style-3 .cta-button:hover {
+    box-shadow: 0 0 50px rgba(212,166,58,0.7), 0 15px 40px rgba(0,0,0,0.4);
+}
+
+/* ── Shield / float icon ─────────────────────────────────── */
+html.style-3 .shield-icon {
+    filter: drop-shadow(0 0 40px rgba(212,166,58,0.8)) drop-shadow(0 0 80px rgba(212,166,58,0.4));
+}
+
+/* ── Coffee module ───────────────────────────────────────── */
+html.style-3 .daily-card {
+    background: rgba(90, 31, 143, 0.3);
+    border: 1px solid rgba(255,255,255,0.07);
+}
+html.style-3 .daily-card.coffee-card { border-left: 4px solid #C084FC; }
+html.style-3 .daily-card.gold-card {
+    border-left: 4px solid #D4A63A;
+    background: rgba(212,166,58,0.06);
+}
+html.style-3 .daily-info h3 { color: #FFFFFF; }
+html.style-3 .daily-info p  { color: #E3CEEE; }
+html.style-3 .coffee-card .daily-amount { color: #C084FC; }
+
+html.style-3 .streak-dot {
+    background: rgba(212,166,58,0.08);
+    border: 1px solid rgba(212,166,58,0.2);
+}
+html.style-3 .streak-dot.filled {
+    background: #D4A63A;
+    border-color: #D4A63A;
+    box-shadow: 0 0 10px rgba(212,166,58,0.7), 0 0 20px rgba(212,166,58,0.3);
+}
+
+html.style-3 .sip-highlight {
+    background: rgba(90, 31, 143, 0.4);
+    border: 1px solid rgba(212,166,58,0.4);
+    box-shadow: 0 0 30px rgba(212,166,58,0.1);
+}
+html.style-3 .sip-highlight h3 { color: #FFFFFF; }
+html.style-3 .sip-highlight p  { color: #E3CEEE; }
+
+html.style-3 .timeline-tile {
+    background: rgba(90, 31, 143, 0.35);
+    border: 1px solid rgba(255,255,255,0.06);
+}
+html.style-3 .timeline-tile:hover {
+    border-color: rgba(212,166,58,0.5);
+    box-shadow: 0 0 20px rgba(212,166,58,0.15);
+}
+html.style-3 .timeline-tile .tile-year  { color: #E3CEEE; }
+html.style-3 .timeline-tile .tile-grams { color: #F5D682; text-shadow: 0 0 10px rgba(212,166,58,0.5); }
+html.style-3 .timeline-tile .tile-value { color: #D4A63A; }
+html.style-3 .accum-label { color: #E3CEEE; }
+
+/* ── 24K module ──────────────────────────────────────────── */
+html.style-3 .purity-block.jewellery {
+    background: rgba(90, 31, 143, 0.3);
+    border: 1px solid rgba(255,255,255,0.08);
+}
+html.style-3 .purity-block.digital {
+    background: rgba(212,166,58,0.08);
+    border: 1px solid rgba(212,166,58,0.5);
+    box-shadow: 0 0 40px rgba(212,166,58,0.15);
+}
+html.style-3 .purity-label   { color: #E3CEEE; }
+html.style-3 .purity-percent { color: #E3CEEE; }
+html.style-3 .jewellery .purity-karat { color: rgba(255,255,255,0.35); -webkit-text-fill-color: rgba(255,255,255,0.35); }
+html.style-3 .purity-fill-wrap { background: rgba(255,255,255,0.05); }
+html.style-3 .jewellery .purity-fill { background: rgba(255,255,255,0.2); }
+html.style-3 .jewellery .purity-badge { background: rgba(255,255,255,0.05); color: #E3CEEE; }
+
+html.style-3 .charge-row {
+    background: rgba(90, 31, 143, 0.3);
+    border: 1px solid rgba(255,255,255,0.06);
+}
+
+html.style-3 .compare-table { border-color: rgba(255,255,255,0.06); }
+html.style-3 .compare-row   { border-bottom-color: rgba(255,255,255,0.04); }
+html.style-3 .compare-row.header-row { background: rgba(90,31,143,0.5); }
+html.style-3 .compare-cell  { color: #E3CEEE; border-right-color: rgba(255,255,255,0.04); }
+html.style-3 .compare-cell.header { color: #FFFFFF; }
+html.style-3 .compare-cell.highlight { color: #F5D682; text-shadow: 0 0 8px rgba(212,166,58,0.4); }
+
+html.style-3 .meter-wrap { background: rgba(255,255,255,0.05); }
+html.style-3 .meter-fill {
+    background: linear-gradient(90deg, #5A1F8F, #D4A63A);
+    box-shadow: 0 0 20px rgba(212,166,58,0.4);
+}
+html.style-3 .meter-label { color: #E3CEEE; }
+
+html.style-3 .back-btn {
+    background: rgba(255,255,255,0.08);
+    color: #E3CEEE;
+    border: 1px solid rgba(255,255,255,0.12);
+}
+
+/* ── High-Contrast Readability Enhancements for Style 3 ── */
+html.style-3 .subtitle { color: #E3CEEE !important; }
+html.style-3 .eyebrow { color: #F5D682 !important; }
+
+/* Time Machine adjustments */
+html.style-3 .data-row .row-label { color: #E3CEEE !important; }
+html.style-3 .data-row .row-val.dim { color: #FFFFFF !important; }
+html.style-3 .choice-card p { color: #E3CEEE !important; }
+html.style-3 .tl-block .tl-label { color: #E3CEEE !important; }
+html.style-3 .tl-block.cash-block .tl-num { color: #C084FC !important; }
+html.style-3 .tl-block .tl-sub { color: #E3CEEE !important; }
+html.style-3 .timeline-screen span, html.style-3 .gold-theme span { color: #E3CEEE !important; }
+
+/* Coffee module adjustments */
+html.style-3 .habit-card p { color: #E3CEEE !important; }
+html.style-3 .month-box .mb-sub { color: #E3CEEE !important; }
+html.style-3 .growth-tile .gt-year { color: #E3CEEE !important; }
+html.style-3 .progress-label span { color: #E3CEEE !important; }
+
+/* 24K Purity adjustments */
+html.style-3 .purity-label { color: #E3CEEE !important; }
+html.style-3 .purity-pct { color: #E3CEEE !important; }
+html.style-3 .charge-name { color: #E3CEEE !important; }
+html.style-3 .cmp-cell { color: #E3CEEE !important; }
+html.style-3 .cmp-cell.head-cell { color: #FFFFFF !important; }
+html.style-3 .meter-labels span { color: #E3CEEE !important; }

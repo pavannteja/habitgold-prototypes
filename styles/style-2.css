@@ -1,0 +1,253 @@
+/* =========================================================
+   STYLE 2 — Flat Geometric Layering (Wealth Builder)
+   Selector: html.style-2
+   Philosophy: Purple Soft 50 canvas, crisp flat 2D shapes,
+               zero gradients, strict brand token palette.
+   ========================================================= */
+
+html.style-2 body,
+html.style-2 html {
+    background-color: #F7F2FA;
+}
+
+html.style-2 {
+    --purple-dark: #F7F2FA;
+    --purple-mid: #EDE4F7;
+    --purple-light: #7B2CBF;
+    --text-main: #1E0A3C;
+    --text-muted: #6B5B8A;
+    --gold-glow: rgba(212, 166, 58, 0.2);
+}
+
+html.style-2 .modal-overlay {
+    background-color: #F7F2FA;
+}
+
+/* ── Screen backgrounds — flat tonal blocks ─────────────── */
+html.style-2 .screen,
+html.style-2 .prompt-screen,
+html.style-2 .conclusion-screen {
+    background: #F7F2FA !important;
+}
+html.style-2 .concept-screen,
+html.style-2 #screen-hook {
+    background: #EDE4F7 !important;
+}
+html.style-2 .split-screen,
+html.style-2 #screen-daily,
+html.style-2 #screen-purity {
+    background: #F7F2FA !important;
+}
+html.style-2 .gold-theme,
+html.style-2 #screen-timelapse,
+html.style-2 #screen-transparency {
+    background: #FDF8EC !important;
+}
+html.style-2 #screen-streak,
+html.style-2 #screen-charges {
+    background: #EDE4F7 !important;
+}
+
+/* ── Typography ─────────────────────────────────────────── */
+html.style-2 .scroll-prompt { color: #1E0A3C; opacity: 0.8; }
+html.style-2 .scroll-indicator { background: linear-gradient(transparent, #7B2CBF); }
+html.style-2 .title { color: #1E0A3C; }
+html.style-2 .subtitle { color: #6B5B8A; }
+html.style-2 .gold-text { color: #D4A63A; text-shadow: none; }
+html.style-2 .purple-light { color: #7B2CBF; }
+html.style-2 .scenario-title { color: #1E0A3C; }
+html.style-2 .insight { color: #6B5B8A; }
+html.style-2 .insight strong { color: #C0392B; }
+html.style-2 .conclusion-text { color: #6B5B8A; }
+html.style-2 .conclusion-text.strong { color: #1E0A3C; }
+
+/* ── Amount box — flat white card, no shadow ────────────── */
+html.style-2 .amount-box {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    box-shadow: none;
+    backdrop-filter: none;
+    border-radius: 12px;
+}
+html.style-2 .amount-box span { color: #6B5B8A; }
+html.style-2 .amount-box h3 { color: #D4A63A; }
+
+/* ── Choice cards — flat, no border gradients ───────────── */
+html.style-2 .choice {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    box-shadow: none;
+    border-radius: 12px;
+}
+html.style-2 .cash-choice {
+    border-top: 4px solid #7B2CBF;
+    background: #F7F2FA;
+}
+html.style-2 .gold-choice {
+    border-top: 4px solid #D4A63A;
+    background: #FDF8EC;
+}
+html.style-2 .choice h3 { color: #1E0A3C; }
+html.style-2 .choice p  { color: #6B5B8A; }
+
+/* ── Comparison cards ────────────────────────────────────── */
+html.style-2 .comparison-card {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    box-shadow: none;
+    border-radius: 12px;
+}
+html.style-2 .comparison-card.gold-border {
+    background: #FDF8EC;
+    border: 1.5px solid rgba(212,166,58,0.5);
+    box-shadow: none;
+}
+html.style-2 .year { background: #EDE4F7; color: #1E0A3C; }
+html.style-2 .year-block p { color: #6B5B8A; }
+html.style-2 .vs-divider { color: #7B2CBF; }
+html.style-2 .value-up { color: #D4A63A; }
+html.style-2 .goods { filter: none; }
+
+/* ── CTA Button — flat solid gold ───────────────────────── */
+html.style-2 .cta-button {
+    background: #D4A63A;
+    color: #1E0A3C;
+    box-shadow: none;
+    border-radius: 8px;
+}
+html.style-2 .cta-button:hover { box-shadow: 0 4px 16px rgba(212,166,58,0.35); }
+
+/* ── Coffee module ───────────────────────────────────────── */
+html.style-2 .daily-card {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+}
+html.style-2 .daily-card.coffee-card { border-left: 4px solid #7B2CBF; background: #F7F2FA; }
+html.style-2 .daily-card.gold-card   { border-left: 4px solid #D4A63A; background: #FDF8EC; }
+html.style-2 .daily-info h3 { color: #1E0A3C; }
+html.style-2 .daily-info p  { color: #6B5B8A; }
+html.style-2 .coffee-card .daily-amount { color: #7B2CBF; }
+
+html.style-2 .streak-dot { background: #E3CEEE; border-color: #C4A8E0; }
+html.style-2 .streak-dot.filled { background: #D4A63A; border-color: #D4A63A; box-shadow: none; }
+
+html.style-2 .sip-highlight {
+    background: #FDF8EC;
+    border: 1.5px solid rgba(212,166,58,0.4);
+    border-radius: 12px;
+}
+html.style-2 .sip-highlight h3 { color: #1E0A3C; }
+html.style-2 .sip-highlight p  { color: #6B5B8A; }
+
+html.style-2 .timeline-tile {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+}
+html.style-2 .timeline-tile:hover { border-color: #D4A63A; }
+html.style-2 .timeline-tile .tile-year  { color: #6B5B8A; }
+html.style-2 .timeline-tile .tile-grams { color: #1E0A3C; }
+html.style-2 .timeline-tile .tile-value { color: #D4A63A; }
+html.style-2 .accum-label { color: #6B5B8A; }
+html.style-2 .accum-bar-wrapper { background: #E3CEEE; }
+html.style-2 .accum-bar { box-shadow: none; }
+
+/* ── 24K module ──────────────────────────────────────────── */
+html.style-2 .purity-block.jewellery {
+    background: #F7F2FA;
+    border: 1px solid #E3CEEE;
+}
+html.style-2 .purity-block.digital {
+    background: #FDF8EC;
+    border: 1.5px solid rgba(212,166,58,0.5);
+    box-shadow: none;
+}
+html.style-2 .purity-label   { color: #6B5B8A; }
+html.style-2 .purity-percent { color: #6B5B8A; }
+html.style-2 .jewellery .purity-karat { color: #A78DC0; -webkit-text-fill-color: #A78DC0; }
+html.style-2 .purity-fill-wrap { background: #E3CEEE; }
+html.style-2 .jewellery .purity-fill  { background: #C4A8E0; }
+html.style-2 .jewellery .purity-badge { background: #EDE4F7; color: #6B5B8A; }
+html.style-2 .digital .purity-badge   { background: #FDF8EC; color: #D4A63A; }
+
+html.style-2 .charge-row {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+}
+html.style-2 .charge-label { color: #475569; }
+
+html.style-2 .compare-table { border-color: #E2E8F0; border-radius: 12px; }
+html.style-2 .compare-row   { border-bottom-color: #F1F5F9; }
+html.style-2 .compare-row.header-row { background: #F7F2FA; }
+html.style-2 .compare-cell  { color: #6B5B8A; border-right-color: #F1F5F9; }
+html.style-2 .compare-cell.header { color: #1E0A3C; }
+
+html.style-2 .meter-wrap { background: #E3CEEE; }
+html.style-2 .meter-fill { background: linear-gradient(90deg, #7B2CBF, #D4A63A); box-shadow: none; }
+html.style-2 .meter-label { color: #6B5B8A; }
+
+html.style-2 .back-btn {
+    background: rgba(123,44,191,0.1);
+    color: #7B2CBF;
+    border: 1px solid rgba(123,44,191,0.25);
+}
+
+/* ── High-Contrast Readability Enhancements for Style 2 ── */
+html.style-2 .scroll-prompt { color: #1E0A3C !important; opacity: 1 !important; }
+html.style-2 .title { color: #1E0A3C !important; }
+html.style-2 .subtitle { color: #6B5B8A !important; }
+html.style-2 .eyebrow { color: #8C681F !important; }
+html.style-2 .eyebrow::before, html.style-2 .eyebrow::after { background: linear-gradient(90deg, transparent, #8C681F) !important; }
+html.style-2 .eyebrow::after { background: linear-gradient(90deg, #8C681F, transparent) !important; }
+html.style-2 .gold-text { background: none !important; -webkit-text-fill-color: #8C681F !important; color: #8C681F !important; text-shadow: none !important; }
+html.style-2 .purple-light { color: #7B2CBF !important; text-shadow: none !important; }
+
+/* Time Machine adjustments */
+html.style-2 .data-row .row-label { color: #6B5B8A !important; }
+html.style-2 .data-row .row-val { color: #8C681F !important; }
+html.style-2 .data-row .row-val.dim { color: #1E0A3C !important; }
+html.style-2 .big-rupee { color: #8C681F !important; }
+html.style-2 .big-grams { background: none !important; -webkit-text-fill-color: #8C681F !important; color: #8C681F !important; }
+html.style-2 .tl-block .tl-label { color: #6B5B8A !important; }
+html.style-2 .tl-block .tl-num { color: #1E0A3C !important; }
+html.style-2 .tl-block.gold-block .tl-num { background: none !important; -webkit-text-fill-color: #8C681F !important; color: #8C681F !important; }
+html.style-2 .tl-block .tl-sub { color: #6B5B8A !important; }
+html.style-2 .tl-block.gold-block .tl-sub { color: #7A5310 !important; }
+html.style-2 .insight-banner p { color: #6B5B8A !important; }
+html.style-2 .insight-banner strong { color: #8C681F !important; }
+html.style-2 .timeline-screen p { color: #C0392B !important; }
+html.style-2 .gold-theme p { color: #8C681F !important; }
+html.style-2 .timeline-screen span, html.style-2 .gold-theme span { color: #6B5B8A !important; }
+
+/* Coffee module adjustments */
+html.style-2 .habit-card h3 { color: #1E0A3C !important; }
+html.style-2 .habit-card p { color: #6B5B8A !important; }
+html.style-2 .coffee .habit-amount { color: #7B2CBF !important; }
+html.style-2 .gold-habit .habit-amount { background: none !important; -webkit-text-fill-color: #8C681F !important; color: #8C681F !important; }
+html.style-2 .month-box .mb-label { color: #8C681F !important; }
+html.style-2 .month-box .mb-num { background: none !important; -webkit-text-fill-color: #8C681F !important; color: #8C681F !important; }
+html.style-2 .month-box .mb-sub { color: #6B5B8A !important; }
+html.style-2 .growth-tile .gt-year { color: #6B5B8A !important; }
+html.style-2 .growth-tile .gt-grams { background: none !important; -webkit-text-fill-color: #1E0A3C !important; color: #1E0A3C !important; }
+html.style-2 .growth-tile .gt-value { color: #D4A63A !important; }
+html.style-2 .progress-label span { color: #6B5B8A !important; }
+html.style-2 .progress-caption { color: #8C681F !important; }
+
+/* 24K Purity adjustments */
+html.style-2 .purity-label { color: #6B5B8A !important; }
+html.style-2 .purity-pct { color: #6B5B8A !important; }
+html.style-2 .pure .purity-pct { color: #8C681F !important; }
+html.style-2 .pure .purity-karat { background: none !important; -webkit-text-fill-color: #8C681F !important; color: #8C681F !important; }
+html.style-2 .charge-name { color: #6B5B8A !important; }
+html.style-2 .charge-val { color: #1E0A3C !important; }
+html.style-2 .charge-val.red { color: #C0392B !important; }
+html.style-2 .charge-val.gold { color: #8C681F !important; }
+html.style-2 .gold-row .charge-name { color: #8C681F !important; }
+html.style-2 .cmp-cell { color: #6B5B8A !important; }
+html.style-2 .cmp-cell.head-cell { color: #1E0A3C !important; }
+html.style-2 .cmp-cell.gold-col { color: #8C681F !important; }
+html.style-2 .cmp-cell.red-col { color: #C0392B !important; }
+html.style-2 .meter-labels span { color: #6B5B8A !important; }
+html.style-2 .meter-caption { color: #8C681F !important; }

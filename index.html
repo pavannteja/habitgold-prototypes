@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HabitGold &mdash; Interactive Prototypes</title>
+    <meta name="description" content="Explore HabitGold's interactive educational modules across three distinct visual design styles.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --purple: #7B2CBF;
+            --purple-dark: #0e0118;
+            --purple-mid: #2d0e4e;
+            --purple-light: #9C4BE8;
+            --purple-soft-50: #F7F2FA;
+            --purple-soft-200: #E3CEEE;
+            --gold: #D4A63A;
+            --gold-light: #F5D682;
+            --gold-dark: #8c681f;
+            --text-on-dark: #ffffff;
+            --text-on-light: #0F172A;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body, html {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--purple-dark);
+            color: var(--text-on-dark);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Ambient orbs */
+        body::before {
+            content: '';
+            position: fixed;
+            width: 700px; height: 700px;
+            background: rgba(123,44,191,0.12);
+            border-radius: 50%;
+            filter: blur(140px);
+            top: -200px; left: -200px;
+            z-index: 0;
+            pointer-events: none;
+            animation: orbFloat 14s ease-in-out infinite;
+        }
+        body::after {
+            content: '';
+            position: fixed;
+            width: 500px; height: 500px;
+            background: rgba(212,166,58,0.07);
+            border-radius: 50%;
+            filter: blur(120px);
+            bottom: -150px; right: -150px;
+            z-index: 0;
+            pointer-events: none;
+            animation: orbFloat 18s ease-in-out infinite reverse;
+        }
+        @keyframes orbFloat {
+            0%, 100% { transform: translate(0,0); }
+            50%       { transform: translate(30px,30px); }
+        }
+
+        /* PAGE WRAPPER */
+        .page {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem 6rem;
+        }
+
+        /* HEADER */
+        .header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+        .logo-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: rgba(212,166,58,0.1);
+            border: 1px solid rgba(212,166,58,0.3);
+            padding: 0.45rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.78rem;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--gold-light);
+            margin-bottom: 1.8rem;
+        }
+        .logo-pill .pulse {
+            width: 6px; height: 6px;
+            background: var(--gold);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%,100% { opacity:1; transform:scale(1); }
+            50%      { opacity:0.4; transform:scale(0.7); }
+        }
+        .header h1 {
+            font-size: clamp(2rem, 5vw, 3.6rem);
+            font-weight: 800;
+            line-height: 1.1;
+            background: linear-gradient(135deg, #fff 30%, var(--gold-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+        .header p {
+            font-size: 1.05rem;
+            color: rgba(196,168,224,0.8);
+            max-width: 480px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* ROW */
+        .row { margin-bottom: 5rem; }
+
+        .row-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .row-header .style-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.35rem 1rem;
+            border-radius: 50px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+        .row-header h2 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            opacity: 0.9;
+        }
+        .row-header .row-desc {
+            font-size: 0.85rem;
+            opacity: 0.55;
+            margin-left: auto;
+        }
+        .divider {
+            height: 1px;
+            background: rgba(255,255,255,0.06);
+            margin-bottom: 1.5rem;
+        }
+
+        /* GRID */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.4rem;
+        }
+
+        /* BASE CARD */
+        .card {
+            border-radius: 20px;
+            overflow: hidden;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+            transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.35s ease;
+            position: relative;
+        }
+        .card:hover { transform: translateY(-7px) scale(1.01); }
+
+        .card-body {
+            padding: 2rem;
+            min-height: 220px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            z-index: 2;
+        }
+
+        .card-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            margin-bottom: 1.2rem;
+            width: fit-content;
+        }
+        .card-emoji {
+            font-size: 2.8rem;
+            margin-bottom: 0.8rem;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+        .card:hover .card-emoji { transform: scale(1.12) rotate(-6deg); }
+
+        .card-body h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 0.5rem;
+            flex: 1;
+        }
+        .card-body p {
+            font-size: 0.85rem;
+            line-height: 1.55;
+            margin-bottom: 1.2rem;
+        }
+        .card-cta {
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: gap 0.3s ease;
+        }
+        .card:hover .card-cta { gap: 0.8rem; }
+
+        /* =============================================
+           ROW 0 — Default dark gradient
+        ============================================= */
+        .row-default .style-pill { background: rgba(123,44,191,0.2); color: var(--purple-light); border: 1px solid rgba(123,44,191,0.35); }
+
+        .row-default .card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+        .row-default .card-1 { box-shadow: 0 6px 24px rgba(123,44,191,0.15); }
+        .row-default .card-2 { box-shadow: 0 6px 24px rgba(212,166,58,0.1); }
+        .row-default .card-3 { box-shadow: 0 6px 24px rgba(123,44,191,0.12); }
+
+        .row-default .card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 20px;
+            opacity: 0;
+            transition: opacity 0.35s;
+            z-index: 1;
+        }
+        .row-default .card-1::before { background: radial-gradient(circle at top right, rgba(123,44,191,0.25), transparent 60%); }
+        .row-default .card-2::before { background: radial-gradient(circle at bottom left, rgba(212,166,58,0.18), transparent 60%); }
+        .row-default .card-3::before { background: radial-gradient(circle at top left, rgba(212,166,58,0.12), rgba(123,44,191,0.12), transparent); }
+        .row-default .card:hover::before { opacity: 1; }
+
+        .row-default .card-1:hover { box-shadow: 0 18px 50px rgba(123,44,191,0.35); border-color: rgba(123,44,191,0.4); }
+        .row-default .card-2:hover { box-shadow: 0 18px 50px rgba(212,166,58,0.25); border-color: rgba(212,166,58,0.35); }
+        .row-default .card-3:hover { box-shadow: 0 18px 50px rgba(212,166,58,0.2), 0 18px 50px rgba(123,44,191,0.18); border-color: rgba(212,166,58,0.3); }
+
+        .row-default .card-body h3 { color: #fff; }
+        .row-default .card-body p  { color: rgba(196,168,224,0.75); }
+        .row-default .card-tag     { background: rgba(123,44,191,0.18); color: #C084FC; border: 1px solid rgba(156,75,232,0.3); }
+        .row-default .card-2 .card-tag { background: rgba(212,166,58,0.12); color: var(--gold-light); border-color: rgba(212,166,58,0.3); }
+        .row-default .card-3 .card-tag { background: rgba(212,166,58,0.1); color: var(--gold-light); border-color: rgba(212,166,58,0.25); }
+        .row-default .card-1 .card-cta { color: #C084FC; }
+        .row-default .card-2 .card-cta { color: var(--gold); }
+        .row-default .card-3 .card-cta { color: var(--gold); }
+
+        /* =============================================
+           ROW 1 — Minimalist Monoline
+        ============================================= */
+        .row-style1 { background: rgba(255,255,255,0.015); border: 1px solid rgba(255,255,255,0.06); border-radius: 24px; padding: 2rem; }
+        .row-style1 .style-pill { background: rgba(248,250,252,0.1); color: #c9b8e0; border: 1.5px solid rgba(255,255,255,0.18); }
+        .row-style1 .row-header h2 { color: rgba(255,255,255,0.85); }
+
+        .row-style1 .card {
+            background: #FFFFFF;
+            border: 1.5px solid #E2E8F0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        .row-style1 .card:hover { box-shadow: 0 8px 24px rgba(123,44,191,0.15); border-color: var(--purple); }
+        .row-style1 .card-2:hover { border-color: var(--gold); box-shadow: 0 8px 24px rgba(212,166,58,0.2); }
+
+        .row-style1 .card-body h3 { color: #0F172A; }
+        .row-style1 .card-body p  { color: #64748B; }
+
+        .row-style1 .card-tag { background: #F7F2FA; color: var(--purple); border: 1.5px solid rgba(123,44,191,0.25); }
+        .row-style1 .card-2 .card-tag { background: #FFFCF0; color: var(--gold-dark); border-color: rgba(212,166,58,0.35); }
+        .row-style1 .card-3 .card-tag { background: #FFFCF0; color: var(--gold-dark); border-color: rgba(212,166,58,0.3); }
+
+        .row-style1 .card-1 { border-left: 3px solid var(--purple); }
+        .row-style1 .card-2 { border-left: 3px solid var(--gold); }
+        .row-style1 .card-3 { border-left: 3px solid var(--gold); }
+
+        .row-style1 .card-1 .card-cta { color: var(--purple); }
+        .row-style1 .card-2 .card-cta { color: var(--gold-dark); }
+        .row-style1 .card-3 .card-cta { color: var(--gold-dark); }
+
+        .row-style1 .card-2 .card-emoji,
+        .row-style1 .card-3 .card-emoji { filter: drop-shadow(0 2px 8px rgba(212,166,58,0.4)); }
+
+        /* =============================================
+           ROW 2 — Flat Geometric
+        ============================================= */
+        .row-style2 { background: rgba(247,242,250,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 24px; padding: 2rem; }
+        .row-style2 .style-pill { background: rgba(227,206,238,0.12); color: #c9b8e0; border: 1px solid rgba(227,206,238,0.25); }
+        .row-style2 .row-header h2 { color: rgba(255,255,255,0.85); }
+
+        .row-style2 .card { border-radius: 12px; box-shadow: none; }
+        .row-style2 .card-1 { background: var(--purple-soft-50); border: 1px solid #E2E8F0; }
+        .row-style2 .card-2 { background: #FDF8EC; border: 1px solid rgba(212,166,58,0.25); }
+        .row-style2 .card-3 { background: #FDF8EC; border: 1px solid rgba(212,166,58,0.2); }
+
+        .row-style2 .card-1:hover { border-color: var(--purple); box-shadow: 0 4px 16px rgba(123,44,191,0.12); }
+        .row-style2 .card-2:hover { border-color: var(--gold); box-shadow: 0 4px 16px rgba(212,166,58,0.18); }
+        .row-style2 .card-3:hover { border-color: var(--gold); box-shadow: 0 4px 16px rgba(212,166,58,0.15); }
+
+        .row-style2 .card-body h3 { color: #1E0A3C; }
+        .row-style2 .card-body p  { color: #6B5B8A; }
+
+        .row-style2 .card::before {
+            content: '';
+            display: block;
+            height: 5px;
+            width: 100%;
+            position: absolute;
+            top: 0; left: 0;
+            z-index: 3;
+            border-radius: 12px 12px 0 0;
+        }
+        .row-style2 .card-1::before { background: var(--purple); }
+        .row-style2 .card-2::before { background: var(--gold); }
+        .row-style2 .card-3::before { background: linear-gradient(90deg, var(--purple), var(--gold)); }
+
+        .row-style2 .card-tag { background: var(--purple-soft-200); color: var(--purple); border: none; }
+        .row-style2 .card-2 .card-tag,
+        .row-style2 .card-3 .card-tag { background: rgba(212,166,58,0.18); color: #7a5310; border: none; }
+
+        .row-style2 .card-1 .card-cta { color: var(--purple); }
+        .row-style2 .card-2 .card-cta,
+        .row-style2 .card-3 .card-cta { color: #7a5310; }
+
+        /* =============================================
+           ROW 3 — High-Contrast Premium (Black Card)
+        ============================================= */
+        .row-style3 { background: linear-gradient(135deg, rgba(90,31,143,0.25), rgba(61,18,112,0.3)); border: 1px solid rgba(212,166,58,0.12); border-radius: 24px; padding: 2rem; }
+        .row-style3 .style-pill { background: rgba(212,166,58,0.12); color: var(--gold-light); border: 1px solid rgba(212,166,58,0.3); }
+        .row-style3 .row-header h2 { color: #fff; }
+
+        .row-style3 .card {
+            background: #5A1F8F;
+            border: 1px solid rgba(212,166,58,0.2);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+        }
+        .row-style3 .card:hover {
+            border-color: rgba(212,166,58,0.6);
+            box-shadow: 0 16px 50px rgba(0,0,0,0.5), 0 0 40px rgba(212,166,58,0.2);
+        }
+
+        .row-style3 .card-body h3 { color: #fff; }
+        .row-style3 .card-body p  { color: #E3CEEE; }
+
+        .row-style3 .card-tag { background: rgba(212,166,58,0.12); color: var(--gold-light); border: 1px solid rgba(212,166,58,0.25); }
+        .row-style3 .card-1 .card-tag { background: rgba(192,132,252,0.15); color: #C084FC; border-color: rgba(192,132,252,0.3); }
+
+        .row-style3 .card-emoji { filter: drop-shadow(0 0 16px rgba(212,166,58,0.6)); }
+        .row-style3 .card:hover .card-emoji { filter: drop-shadow(0 0 24px rgba(212,166,58,0.9)); }
+
+        .row-style3 .card-1 .card-cta { color: #C084FC; }
+        .row-style3 .card-2 .card-cta,
+        .row-style3 .card-3 .card-cta { color: var(--gold-light); }
+
+        .row-style3 .card::after {
+            content: '';
+            display: block;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            position: absolute;
+            bottom: 0; left: 10%; right: 10%;
+            opacity: 0;
+            transition: opacity 0.35s;
+        }
+        .row-style3 .card:hover::after { opacity: 1; }
+
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            color: rgba(196,168,224,0.3);
+            font-size: 0.82rem;
+            margin-top: 2rem;
+        }
+
+        /* MOBILE */
+        @media (max-width: 700px) {
+            .page { padding: 2.5rem 1rem 4rem; }
+            .cards-grid { grid-template-columns: 1fr; gap: 1rem; }
+            .row { margin-bottom: 3rem; }
+            .row-header .row-desc { display: none; }
+            .row-style1, .row-style2, .row-style3 { padding: 1.2rem; }
+            .header { margin-bottom: 3rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <!-- HEADER -->
+    <header class="header">
+        <div class="logo-pill">
+            <span class="pulse"></span>
+            HabitGold Prototypes
+        </div>
+        <h1>Interactive Learning<br>Modules</h1>
+        <p>2 visual design themes. 3 educational stories. Tap any banner to experience it.</p>
+    </header>
+
+    <!-- ROW 0: Dark Background -->
+    <section class="row row-default">
+        <div class="row-header">
+            <div class="style-pill">Dark Background</div>
+            <h2>Classic Premium &mdash; Dark Theme</h2>
+            <span class="row-desc">Deep purple &middot; Gold glow</span>
+        </div>
+        <div class="divider"></div>
+        <div class="cards-grid">
+            <a href="purchasing-power-machine/" class="card card-1" id="d-timemachine">
+                <div class="card-body">
+                    <span class="card-tag">Inflation</span>
+                    <span class="card-emoji">&#x1F6E1;&#xFE0F;</span>
+                    <h3>The Purchasing Power Time Machine</h3>
+                    <p>See what &#8377;10,000 could buy 10 years ago vs. today &mdash; and how gold protects what cash silently destroys.</p>
+                    <div class="card-cta">Explore <span>&rarr;</span></div>
+                </div>
+            </a>
+            <a href="coffee-vs-gold/" class="card card-2" id="d-coffee">
+                <div class="card-body">
+                    <span class="card-tag">Daily Habits</span>
+                    <span class="card-emoji">&#x2615;</span>
+                    <h3>The Coffee vs. Gold Reality Check</h3>
+                    <p>Spending &#8377;50 on coffee daily? See how redirecting micro-amounts builds real gold wealth over time.</p>
+                    <div class="card-cta">Explore <span>&rarr;</span></div>
+                </div>
+            </a>
+            <a href="24k-advantage/" class="card card-3" id="d-24k">
+                <div class="card-body">
+                    <span class="card-tag">Purity</span>
+                    <span class="card-emoji">&#x1FA99;</span>
+                    <h3>Demystifying Purity: The 24K Advantage</h3>
+                    <p>Why 24K digital gold beats jewellery. No making charges, no impurities &mdash; pure liquid value.</p>
+                    <div class="card-cta">Explore <span>&rarr;</span></div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- ROW 1: Light Background -->
+    <section class="row row-style1">
+        <div class="row-header">
+            <div class="style-pill">Light Background</div>
+            <h2>Minimalist Clean &mdash; Light Theme</h2>
+            <span class="row-desc">White canvas &middot; Thin lines &middot; Gold accent</span>
+        </div>
+        <div class="divider"></div>
+        <div class="cards-grid">
+            <a href="purchasing-power-machine/?style=1" class="card card-1" id="s1-timemachine">
+                <div class="card-body">
+                    <span class="card-tag">Inflation</span>
+                    <span class="card-emoji">&#x1F6E1;&#xFE0F;</span>
+                    <h3>The Purchasing Power Time Machine</h3>
+                    <p>See what &#8377;10,000 could buy 10 years ago vs. today &mdash; and how gold protects what cash silently destroys.</p>
+                    <div class="card-cta">Explore <span>&rarr;</span></div>
+                </div>
+            </a>
+            <a href="coffee-vs-gold/?style=1" class="card card-2" id="s1-coffee">
+                <div class="card-body">
+                    <span class="card-tag">Daily Habits</span>
+                    <span class="card-emoji">&#x2615;</span>
+                    <h3>The Coffee vs. Gold Reality Check</h3>
+                    <p>Spending &#8377;50 on coffee daily? See how redirecting micro-amounts builds real gold wealth over time.</p>
+                    <div class="card-cta">Explore <span>&rarr;</span></div>
+                </div>
+            </a>
+            <a href="24k-advantage/?style=1" class="card card-3" id="s1-24k">
+                <div class="card-body">
+                    <span class="card-tag">Purity</span>
+                    <span class="card-emoji">&#x1FA99;</span>
+                    <h3>Demystifying Purity: The 24K Advantage</h3>
+                    <p>Why 24K digital gold beats jewellery. No making charges, no impurities &mdash; pure liquid value.</p>
+                    <div class="card-cta">Explore <span>&rarr;</span></div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <footer class="footer">HabitGold &middot; Prototype Showcase &middot; 2 Styles x 3 Modules</footer>
+</div>
+</body>
+</html>
