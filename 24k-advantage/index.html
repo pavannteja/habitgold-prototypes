@@ -68,7 +68,9 @@
             font-size: 4.8rem; font-weight: 800; line-height: 1.1; margin-bottom: 0.3rem;
             letter-spacing: -0.03em;
         }
-        .jewel .purity-karat { color: rgba(255,255,255,0.3); }
+        .jewel .purity-label { color: rgba(255, 255, 255, 0.75); }
+        .jewel .purity-karat { color: rgba(255, 255, 255, 0.7); }
+        .jewel .purity-pct   { color: rgba(255, 255, 255, 0.7); }
         .pure .purity-karat {
             background: linear-gradient(135deg, var(--gold-primary), var(--gold-shine));
             -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
@@ -94,7 +96,7 @@
             display: inline-block; padding: 0.35rem 0.9rem; border-radius: 50px;
             font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 600;
         }
-        .jewel .purity-badge { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.35); }
+        .jewel .purity-badge { background: rgba(255, 255, 255, 0.12); color: rgba(255, 255, 255, 0.7); }
         .pure .purity-badge { background: rgba(212,166,58,0.12); color: var(--gold-light); border: 1px solid rgba(212,166,58,0.2); }
 
         /* ── Charges list ──────────────────────────────────── */
@@ -348,6 +350,9 @@
                         <div class="cmp-cell gold-col">Secure vault</div>
                     </div>
                 </div>
+                <div class="meter-block">
+
+                    <div class="meter-caption">Every milligram you own is verified, vaulted &amp; insured.</div>
                 </div>
             </div>
         </section>
@@ -381,11 +386,17 @@
                         setTimeout(() => { document.getElementById('bar-22k').style.width = '91.67%'; }, 300);
                         setTimeout(() => { document.getElementById('bar-24k').style.width = '99.9%';  }, 500);
                     }
+                    if (e.target.closest('#screen-compare')) {
+                        setTimeout(() => { const el = document.getElementById('meter-fill'); if (el) el.style.width = '99%'; }, 400);
+                    }
                 } else {
                     e.target.classList.remove('active');
                     if (e.target.closest('#screen-purity')) {
                         document.getElementById('bar-22k').style.width = '0%';
                         document.getElementById('bar-24k').style.width = '0%';
+                    }
+                    if (e.target.closest('#screen-compare')) {
+                        const el = document.getElementById('meter-fill'); if (el) el.style.width = '0%';
                     }
                 }
             });

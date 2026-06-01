@@ -17,6 +17,8 @@ html.style-1 {
     --purple-light: #7B2CBF;
     --text-main: #0F172A;
     --text-muted: #64748B;
+    --text-on-dark: #0F172A;
+    --text-secondary: #475569;
     --gold-glow: rgba(212, 166, 58, 0.18);
 }
 
@@ -144,37 +146,37 @@ html.style-1 .accum-label { color: #64748B; }
 html.style-1 .accum-bar-wrapper { background: #E2E8F0; }
 
 /* ── 24K module ──────────────────────────────────────────── */
-html.style-1 .purity-block.jewellery {
+html.style-1 .purity-card.jewel {
     background: #FFFFFF;
     border: 1.5px solid #E2E8F0;
 }
-html.style-1 .purity-block.digital {
+html.style-1 .purity-card.pure {
     background: #FFFCF0;
     border: 1.5px solid #D4A63A;
     box-shadow: 4px 4px 0px rgba(212,166,58,0.2);
 }
 html.style-1 .purity-label  { color: #64748B; }
-html.style-1 .purity-percent { color: #64748B; }
-html.style-1 .jewellery .purity-karat { color: #94A3B8; -webkit-text-fill-color: #94A3B8; }
-html.style-1 .purity-fill-wrap { background: #E2E8F0; }
-html.style-1 .jewellery .purity-fill { background: #CBD5E1; }
-html.style-1 .jewellery .purity-badge { background: #F1F5F9; color: #64748B; }
+html.style-1 .purity-pct { color: #64748B; }
+html.style-1 .jewel .purity-karat { color: #94A3B8; -webkit-text-fill-color: #94A3B8; }
+html.style-1 .purity-bar-wrap { background: #E2E8F0; }
+html.style-1 .jewel .purity-bar { background: #CBD5E1; }
+html.style-1 .jewel .purity-badge { background: #F1F5F9; color: #64748B; }
 
-html.style-1 .charge-row {
+html.style-1 .charge-item {
     background: #FFFFFF;
     border: 1.5px solid #E2E8F0;
 }
-html.style-1 .charge-label  { color: #475569; }
+html.style-1 .charge-name  { color: #475569; }
 
-html.style-1 .compare-table { border-color: #E2E8F0; }
-html.style-1 .compare-row   { border-bottom-color: #F1F5F9; }
-html.style-1 .compare-row.header-row { background: #F8FAFC; }
-html.style-1 .compare-cell  { color: #475569; border-right-color: #F1F5F9; }
-html.style-1 .compare-cell.header { color: #0F172A; }
+html.style-1 .compare-panel { border-color: #E2E8F0; }
+html.style-1 .cmp-row   { border-bottom-color: #F1F5F9; }
+html.style-1 .cmp-row.head { background: #F8FAFC; }
+html.style-1 .cmp-cell  { color: #475569; border-right-color: #F1F5F9; }
+html.style-1 .cmp-cell.head-cell { color: #0F172A; }
 
-html.style-1 .meter-wrap { background: #E2E8F0; }
+html.style-1 .meter-track { background: #E2E8F0; }
 html.style-1 .meter-fill { background: linear-gradient(90deg, #7B2CBF, #D4A63A); box-shadow: none; }
-html.style-1 .meter-label { color: #64748B; }
+html.style-1 .meter-labels span { color: #64748B; }
 
 /* Back button override */
 html.style-1 .back-btn {
@@ -184,7 +186,7 @@ html.style-1 .back-btn {
 }
 
 /* ── High-Contrast Readability Enhancements for Style 1 ── */
-html.style-1 .scroll-prompt { color: #0F172A !important; opacity: 1 !important; }
+html.style-1 .scroll-prompt { color: #0F172A !important; -webkit-text-fill-color: #0F172A !important; opacity: 1 !important; }
 html.style-1 .title { color: #0F172A !important; }
 html.style-1 .subtitle { color: #475569 !important; }
 html.style-1 .eyebrow { color: #8C681F !important; }

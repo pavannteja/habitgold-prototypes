@@ -16,6 +16,8 @@ html.style-2 {
     --purple-light: #7B2CBF;
     --text-main: #1E0A3C;
     --text-muted: #6B5B8A;
+    --text-on-dark: #1E0A3C;
+    --text-secondary: #6B5B8A;
     --gold-glow: rgba(212, 166, 58, 0.2);
 }
 
@@ -153,40 +155,39 @@ html.style-2 .accum-label { color: #6B5B8A; }
 html.style-2 .accum-bar-wrapper { background: #E3CEEE; }
 html.style-2 .accum-bar { box-shadow: none; }
 
-/* ── 24K module ──────────────────────────────────────────── */
-html.style-2 .purity-block.jewellery {
+html.style-2 .purity-card.jewel {
     background: #F7F2FA;
     border: 1px solid #E3CEEE;
 }
-html.style-2 .purity-block.digital {
+html.style-2 .purity-card.pure {
     background: #FDF8EC;
     border: 1.5px solid rgba(212,166,58,0.5);
     box-shadow: none;
 }
 html.style-2 .purity-label   { color: #6B5B8A; }
-html.style-2 .purity-percent { color: #6B5B8A; }
-html.style-2 .jewellery .purity-karat { color: #A78DC0; -webkit-text-fill-color: #A78DC0; }
-html.style-2 .purity-fill-wrap { background: #E3CEEE; }
-html.style-2 .jewellery .purity-fill  { background: #C4A8E0; }
-html.style-2 .jewellery .purity-badge { background: #EDE4F7; color: #6B5B8A; }
-html.style-2 .digital .purity-badge   { background: #FDF8EC; color: #D4A63A; }
+html.style-2 .purity-pct { color: #6B5B8A; }
+html.style-2 .jewel .purity-karat { color: #A78DC0; -webkit-text-fill-color: #A78DC0; }
+html.style-2 .purity-bar-wrap { background: #E3CEEE; }
+html.style-2 .jewel .purity-bar  { background: #C4A8E0; }
+html.style-2 .jewel .purity-badge { background: #EDE4F7; color: #6B5B8A; }
+html.style-2 .pure .purity-badge   { background: #FDF8EC; color: #D4A63A; }
 
-html.style-2 .charge-row {
+html.style-2 .charge-item {
     background: #FFFFFF;
     border: 1px solid #E2E8F0;
     border-radius: 12px;
 }
-html.style-2 .charge-label { color: #475569; }
+html.style-2 .charge-name { color: #475569; }
 
-html.style-2 .compare-table { border-color: #E2E8F0; border-radius: 12px; }
-html.style-2 .compare-row   { border-bottom-color: #F1F5F9; }
-html.style-2 .compare-row.header-row { background: #F7F2FA; }
-html.style-2 .compare-cell  { color: #6B5B8A; border-right-color: #F1F5F9; }
-html.style-2 .compare-cell.header { color: #1E0A3C; }
+html.style-2 .compare-panel { border-color: #E2E8F0; border-radius: 12px; }
+html.style-2 .cmp-row   { border-bottom-color: #F1F5F9; }
+html.style-2 .cmp-row.head { background: #F7F2FA; }
+html.style-2 .cmp-cell  { color: #6B5B8A; border-right-color: #F1F5F9; }
+html.style-2 .cmp-cell.head-cell { color: #1E0A3C; }
 
-html.style-2 .meter-wrap { background: #E3CEEE; }
+html.style-2 .meter-track { background: #E3CEEE; }
 html.style-2 .meter-fill { background: linear-gradient(90deg, #7B2CBF, #D4A63A); box-shadow: none; }
-html.style-2 .meter-label { color: #6B5B8A; }
+html.style-2 .meter-labels span { color: #6B5B8A; }
 
 html.style-2 .back-btn {
     background: rgba(123,44,191,0.1);
@@ -195,7 +196,7 @@ html.style-2 .back-btn {
 }
 
 /* ── High-Contrast Readability Enhancements for Style 2 ── */
-html.style-2 .scroll-prompt { color: #1E0A3C !important; opacity: 1 !important; }
+html.style-2 .scroll-prompt { color: #1E0A3C !important; -webkit-text-fill-color: #1E0A3C !important; opacity: 1 !important; }
 html.style-2 .title { color: #1E0A3C !important; }
 html.style-2 .subtitle { color: #6B5B8A !important; }
 html.style-2 .eyebrow { color: #8C681F !important; }

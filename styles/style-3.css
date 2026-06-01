@@ -178,40 +178,40 @@ html.style-3 .timeline-tile .tile-value { color: #D4A63A; }
 html.style-3 .accum-label { color: #E3CEEE; }
 
 /* ── 24K module ──────────────────────────────────────────── */
-html.style-3 .purity-block.jewellery {
+html.style-3 .purity-card.jewel {
     background: rgba(90, 31, 143, 0.3);
     border: 1px solid rgba(255,255,255,0.08);
 }
-html.style-3 .purity-block.digital {
+html.style-3 .purity-card.pure {
     background: rgba(212,166,58,0.08);
     border: 1px solid rgba(212,166,58,0.5);
     box-shadow: 0 0 40px rgba(212,166,58,0.15);
 }
 html.style-3 .purity-label   { color: #E3CEEE; }
-html.style-3 .purity-percent { color: #E3CEEE; }
-html.style-3 .jewellery .purity-karat { color: rgba(255,255,255,0.35); -webkit-text-fill-color: rgba(255,255,255,0.35); }
-html.style-3 .purity-fill-wrap { background: rgba(255,255,255,0.05); }
-html.style-3 .jewellery .purity-fill { background: rgba(255,255,255,0.2); }
-html.style-3 .jewellery .purity-badge { background: rgba(255,255,255,0.05); color: #E3CEEE; }
+html.style-3 .purity-pct { color: #E3CEEE; }
+html.style-3 .jewel .purity-karat { color: rgba(255,255,255,0.35); -webkit-text-fill-color: rgba(255,255,255,0.35); }
+html.style-3 .purity-bar-wrap { background: rgba(255,255,255,0.05); }
+html.style-3 .jewel .purity-bar { background: rgba(255,255,255,0.2); }
+html.style-3 .jewel .purity-badge { background: rgba(255,255,255,0.05); color: #E3CEEE; }
 
-html.style-3 .charge-row {
+html.style-3 .charge-item {
     background: rgba(90, 31, 143, 0.3);
     border: 1px solid rgba(255,255,255,0.06);
 }
 
-html.style-3 .compare-table { border-color: rgba(255,255,255,0.06); }
-html.style-3 .compare-row   { border-bottom-color: rgba(255,255,255,0.04); }
-html.style-3 .compare-row.header-row { background: rgba(90,31,143,0.5); }
-html.style-3 .compare-cell  { color: #E3CEEE; border-right-color: rgba(255,255,255,0.04); }
-html.style-3 .compare-cell.header { color: #FFFFFF; }
-html.style-3 .compare-cell.highlight { color: #F5D682; text-shadow: 0 0 8px rgba(212,166,58,0.4); }
+html.style-3 .compare-panel { border-color: rgba(255,255,255,0.06); }
+html.style-3 .cmp-row   { border-bottom-color: rgba(255,255,255,0.04); }
+html.style-3 .cmp-row.head { background: rgba(90,31,143,0.5); }
+html.style-3 .cmp-cell  { color: #E3CEEE; border-right-color: rgba(255,255,255,0.04); }
+html.style-3 .cmp-cell.head-cell { color: #FFFFFF; }
+html.style-3 .cmp-cell.gold-col { color: #F5D682; text-shadow: 0 0 8px rgba(212,166,58,0.4); }
 
-html.style-3 .meter-wrap { background: rgba(255,255,255,0.05); }
+html.style-3 .meter-track { background: rgba(255,255,255,0.05); }
 html.style-3 .meter-fill {
     background: linear-gradient(90deg, #5A1F8F, #D4A63A);
     box-shadow: 0 0 20px rgba(212,166,58,0.4);
 }
-html.style-3 .meter-label { color: #E3CEEE; }
+html.style-3 .meter-labels span { color: #E3CEEE; }
 
 html.style-3 .back-btn {
     background: rgba(255,255,255,0.08);
